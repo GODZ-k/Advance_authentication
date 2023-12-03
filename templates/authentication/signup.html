@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>sign up</h1>
+
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+        <label for="">username</label>
+        <input type="text" name="username" id="username" required placeholder="enter your username" >
+<br>
+        <label for="">first name</label>
+        <input type="text" name="fname" id="fname" required placeholder="enter your fname">
+<br>
+        <label for="">last name</label>
+        <input type="text" name="lname" id="lname"  placeholder="enter your lname">
+<br>
+        <label for="">email</label>
+        <input type="email" name="email" id="email" required placeholder="enter your email">
+<br>
+        <label for="">password</label>
+        <input type="password" name="password" id="password" required placeholder="enter your password">
+<br>
+        <label for="">confirm password</label>
+        <input type="password" name="confirmpassword" id="confirmpassword" required placeholder="enter your confirm password">
+<br>
+        <button type="submit">sign up</button>
+    </form>
+    <button><a href="{% url 'signin' %}">signin</a></button>
+</body>
+</html>
